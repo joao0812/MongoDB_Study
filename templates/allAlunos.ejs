@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alunos</title>
+</head>
+<body>
+    <h1>HELLO</h1>
+    <% for(let i=0; i < alunos.length; i++){%>
+        <div id='<%=alunos[i]._id%>'>
+            <h2><%=alunos[i].name%></h2>
+            <h3><%=alunos[i].serie%></h3>
+            <button onclick="removeAluno('<%=alunos[i]._id%>')">DELETE</button>
+        </div>
+    <%}%>
+
+    <script>
+        function removeAluno(id){
+            console.log(id)
+            fetch('/aluno/remove/'+id, {
+                method:'DELETE',
+            })
+            .then((res)=> {
+                res.text().then(alunoId=>{
+                    console.log(alunoId)
+                    console.log(document.getElementById(alunoId))
+                    document.getElementById(alunoId).remove()
+                })
+            })
+
+        }
+    </script>
+
+
+</body>
+</html>

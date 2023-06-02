@@ -1,11 +1,14 @@
 const express = require('express');
 
+
 const Aluno = require('../models/Aluno');
 const alunoController = require('../controllers/alunoController')
 
-router = express.Router()
+const router = express.Router()
 
 // --------------------------GET--------------------------------
+
+// router.use() -> Abrange todas as requisições HTTP, usada quando n se quer definir uma requisição específica como GER, POST, DELETE e etc.
 
 router.get('/aluno/all', alunoController.getAllAlunos)
 
